@@ -1,0 +1,65 @@
+.FrontSearch {
+    background-color: #6294b6;
+    height: 100vh;
+    color: #2c3e50;
+}
+
+.FrontSearch-header {
+    background-color: #ecf0f1;
+    padding: 1.5rem 0 .5rem 1.7rem;
+    border-bottom: 1px solid #2c3e50;
+    position: relative;
+}
+
+.FrontSearch-title {
+    font-size: 1.5rem;
+    display: inline-block;
+}
+
+.FrontSearch-cloudyImg {
+    display: inline-block;
+    width: 2rem;
+    margin-left: 1rem;
+    margin-bottom: -.5rem;
+}
+
+.FrontSearch-formbox {
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+}
+
+.FrontSearch-directions {
+    display: block;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+}
+
+.FrontSearch-options {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.FrontSearch-options-option {
+    margin-bottom: .5rem;
+}
+
+.FrontSearch-options-option-direction {
+    display: block;
+}
+
+.us-only {
+    font-size: .9rem;
+    margin-left: .5rem;
+}
+
+.FrontSearch-options-option-example {
+    display: block;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    margin-top: .2rem;
+}
