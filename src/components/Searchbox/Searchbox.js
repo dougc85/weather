@@ -21,8 +21,14 @@ class Searchbox extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.props.setSearch(this.state.searchTerms);
         let modifiedSearch = this.cleanUpSearchTerms(this.state.searchTerms);
         this.props.history.push(`/search/${modifiedSearch}`);
+
+        if (this.props.little === 'true') {
+            this.props.getData(modifiedSearch);
+        }
+        
     }
 
     cleanUpSearchTerms(terms) {
@@ -31,9 +37,9 @@ class Searchbox extends Component {
 
     render() {
         return (
-            <div className={this.props.little ? "Searchbox-little" : "Searchbox"}>
-                <input className={this.props.little ? "Searchbox-input-little" : "Searchbox-input"} value={this.state.searchTerms} id="weather-search" type="text" placeholder="How is the weather in..." onChange={this.handleChange}></input>
-                <button className={this.props.little ? "Searchbox-submit-little" : "Searchbox-submit"} onClick={this.handleSubmit}>Search</button>
+            <div className={this.props.little === 'true' ? "Searchbox-little" : "Searchbox"}>
+                <input className={this.props.little === 'true' ? "Searchbox-input-little" : "Searchbox-input"} value={this.state.searchTerms} id="weather-search" type="text" placeholder="How is the weather in..." onChange={this.handleChange}></input>
+                <button className={this.props.little === 'true' ? "Searchbox-submit-little" : "Searchbox-submit"} onClick={this.handleSubmit}>Search</button>
             </div>
         )
     }

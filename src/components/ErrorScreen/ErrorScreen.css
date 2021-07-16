@@ -1,0 +1,13 @@
+.ErrorScreen {
+    background-color: #6294b6;
+    height: 100vh;
+    color: #2c3e50;
+    padding-top: 2rem;
+    padding-left: 3rem;
+}
+
+.ErrorScreen-heading {
+    font-size: 2.5rem;
+    color: #ffcf32;
+    text-shadow: 0 1px 2px rgba(0,0,0,1);
+}
