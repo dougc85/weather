@@ -13,7 +13,7 @@ class Header extends Component {
                 </div>
                 {(this.props.searchbar === 'true') && (
                     <form autoComplete='off'>
-                        <Searchbox little='true' history={this.props.history} setSearch={this.props.setSearch} getData={this.props.getData} />
+                        <Searchbox little='true' history={this.props.history} setSearch={this.props.setSearch} setLoading={this.props.setLoading} getData={this.props.getData} />
                     </form>
                 )}
             </header>

@@ -26,6 +26,7 @@ class Searchbox extends Component {
         this.props.history.push(`/search/${modifiedSearch}`);
 
         if (this.props.little === 'true') {
+            this.props.setLoading();
             this.props.getData(modifiedSearch);
         }
         

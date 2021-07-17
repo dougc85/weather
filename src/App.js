@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      userSearch: 'asdf',
+      userSearch: 'tue8fmcn234-7#',
     }
 
     this.setRootSearchState = this.setRootSearchState.bind(this);

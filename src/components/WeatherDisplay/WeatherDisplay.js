@@ -2,9 +2,12 @@ import { React, Component } from 'react';
 
 class WeatherDisplay extends Component {
     render() {
+        console.log(this.props.weatherData);
+        console.log(this.props.locData);
+        
         return (
             <div className="WeatherDisplay">
-                Loaded!!!!!!
+                <img src={this.props.currentPic} alt='current weather icon' />
             </div>
         )
     }

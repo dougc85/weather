@@ -13,6 +13,9 @@ class MainPage extends Component {
             loading: true,
             error: false,
             userSearch: '',
+            weatherData: {},
+            locData: {},
+            currentPic: '',
         }
 
         this.countryCodes = {
@@ -23,9 +26,8 @@ class MainPage extends Component {
         this.geoArray = ["1","1","7","1","3","0","8","0","6","7","4","5","0","0","4","e","1","5","8","7","2","8","3","1","x","3","3","4","3","4"];
         this.geo = this.geoArray.join('');
 
-        //Have to give instructions to copy and paste the country names.
-
         this.getData = this.getData.bind(this);
+        this.setLoading = this.setLoading.bind(this);
     }
 
     async componentDidMount() {
@@ -41,17 +43,15 @@ class MainPage extends Component {
             const lon = data.coord.lon;
             const response2 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&&appid=${this.access}`);
             const weatherData = await response2.json();
-            console.log(weatherData);
             const response3 = await fetch(`https://geocode.xyz/?locate=${lat},${lon}&json=1&auth=${this.geo}`);
             const locData = await response3.json();
             this.setState({
                 loading: false,
                 error: false,
+                weatherData: weatherData,
+                locData: locData,
+                currentPic: `http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`,
             })
-            console.log(locData);
-
-            const currentPic = `http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`
-            console.log(currentPic);
         }
         catch {
             this.setState({
@@ -134,19 +134,25 @@ class MainPage extends Component {
         return ulArray;
     }
 
+    setLoading() {
+        this.setState({
+            loading: true,
+        })
+    }
+
     render() {
         let mainContent;
         if (this.state.loading) {
             mainContent = (<LoadingScreen />);
         } else if (this.state.error) {
-            mainContent = (<ErrorScreen countries={this.makeCountryList()} userSearch={this.props.userSearch}/>);
+            mainContent = (<ErrorScreen countries={this.makeCountryList()} userSearch={this.props.userSearch} setSearch={this.props.setSearch} urlSearch={this.props.match.params.terms} />);
         } else {
-            mainContent = (<WeatherDisplay />);
+            mainContent = (<WeatherDisplay weatherData={this.state.weatherData} locData={this.state.locData} currentPic={this.state.currentPic} />);
         };
 
         return (
             <div className="MainPage">
-                <Header searchbar='true' history={this.props.history} setSearch={this.props.setSearch} getData={this.getData} />
+                <Header searchbar='true' history={this.props.history} setSearch={this.props.setSearch} setLoading={this.setLoading} getData={this.getData} />
                 {mainContent}
             </div>
         )
