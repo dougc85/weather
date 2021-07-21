@@ -1,0 +1,8 @@
+.WeatherDisplay {
+    background-color: #6294b6;
+    height: 100vh;
+    color: black;
+    padding-top: 2rem;
+    padding-left: 3rem;
+    font-weight: 700;
+}
