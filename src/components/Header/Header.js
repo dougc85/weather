@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <header className="Header">
-                <div className="Header-titlebox">
+                <div className="Header-titlebox" onClick={() => {this.props.history.push(`/`)}}>
                     <h1 className="Header-title">International Weather Information</h1>
                     <img className="Header-cloudyImg" src={cloudyImg} alt="icon"/>
                 </div>

@@ -27,6 +27,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" render={routeProps => <FrontSearch {...routeProps} setSearch={this.setRootSearchState} />} />
+          <Route exact path="/search" render={routeProps => <FrontSearch {...routeProps} setSearch={this.setRootSearchState} />} />
           <Route exact path="/search/:terms" render={routeProps => <MainPage {...routeProps} setSearch={this.setRootSearchState} userSearch={this.state.userSearch} />} />
         </Switch>
       

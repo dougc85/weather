@@ -8,8 +8,8 @@ class Conditions extends Component {
         return (
             <div className="Conditions">
                 <p className="Conditions-main">{main}</p>
-                <p className="Conditions-description">{description}</p>
                 <img className="Conditions-icon" src={this.props.currentPic} alt={'current weather icon'}></img>
+                <p className="Conditions-description">{description}</p>
             </div>
         )
     }

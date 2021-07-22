@@ -4,7 +4,7 @@ import './DateInfo.css';
 class DateInfo extends Component {
 
     getDayOfWeek() {
-        const day = (new Date(this.props.dt)).getUTCDay();
+        const day = this.props.day;
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         return days[day];
     }
@@ -12,8 +12,13 @@ class DateInfo extends Component {
     getCurrentTime() {
         const date = new Date(this.props.dt);
         let hours = date.getUTCHours();
-        const minutes = date.getUTCMinutes();
+        let minutes = date.getUTCMinutes().toString();
         let ampm = 'am';
+
+        if (minutes.length === 1) {
+            minutes = '0'.concat(minutes);
+        }
+        
         if (hours === 0) {
             hours = 12;
         } else if (hours === 12) {
@@ -31,8 +36,8 @@ class DateInfo extends Component {
         this.getDayOfWeek();
         return (
             <div className="DateInfo">
-                <p className="DateInfo-Day">{this.getDayOfWeek()}</p>
-                <p className="DateInfo-Time">{this.getCurrentTime()}</p>
+                <p className="DateInfo-day">{this.getDayOfWeek()}</p>
+                <p className="DateInfo-time">{this.getCurrentTime()}</p>
             </div>
         )
     }

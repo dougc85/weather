@@ -1,0 +1,14 @@
+.DateInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.DateInfo-day {
+    font-size: 2rem;
+}
+
+.DateInfo-time {
+    font-size: 1.5rem;
+}

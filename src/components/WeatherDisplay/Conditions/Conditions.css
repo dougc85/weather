@@ -1,0 +1,18 @@
+.Conditions {
+    text-align: center;
+}
+
+.Conditions-main {
+    font-size: 2rem;
+    margin-bottom: -1.5rem;
+}
+
+.Conditions-icon {
+    height: 10rem;
+}
+
+.Conditions-description {
+    font-size: 1.5rem;
+    margin-top: -1.5rem;
+}
+

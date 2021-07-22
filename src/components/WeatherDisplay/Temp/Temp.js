@@ -17,8 +17,10 @@ class Temp extends Component {
 
         return(
             <div className="Temp">
-                <p className="Temp-current">{Math.round(temp)}º {this.props.units}</p>
-                <p className="Temp-feels">feels like {Math.round(feels)}º {this.props.units}</p>
+                <div className="Temp-container">
+                    <p className="Temp-current">{Math.round(temp)}º {this.props.units}</p>
+                    <p className="Temp-feels">feels like {Math.round(feels)}º {this.props.units}</p>
+                </div>
                 <button className="Temp-change-units" onClick={buttonAction}>{buttonText}</button>
             </div>
         )

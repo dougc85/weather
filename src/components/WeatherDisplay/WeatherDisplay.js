@@ -11,6 +11,9 @@ class WeatherDisplay extends Component {
     constructor(props) {
         super(props);
 
+        this.dt = (this.props.weatherData.current.dt + this.props.weatherData.timezone_offset) * 1000;
+        this.day = (new Date(this.dt)).getUTCDay();
+
         this.state = {
             units: 'f',
         }
@@ -40,15 +43,17 @@ class WeatherDisplay extends Component {
         console.log(this.props.weatherData);
         console.log(this.props.locData);
 
-        const { current, daily, timezone_offset } = this.props.weatherData;
+        const { current, daily } = this.props.weatherData;
 
         return (
             <div className="WeatherDisplay">
                 <City locData={this.props.locData} />
-                <DateInfo dt={(current.dt + timezone_offset) * 1000} />
-                <Temp units={this.state.units} changeUnitsToC={this.changeUnitsToC} changeUnitsToF={this.changeUnitsToF} convertFtoC={this.convertFtoC} temp={current.temp} feels={current.feels_like} />
-                <Conditions units={this.state.units} weather={current.weather[0]} currentPic={this.props.currentPic} />
-                <Forecast daily={daily} />
+                <div className="WeatherDisplay-today">
+                    <DateInfo dt={this.dt} day={this.day} />
+                    <Conditions units={this.state.units} weather={current.weather[0]} currentPic={this.props.currentPic} />
+                    <Temp units={this.state.units} changeUnitsToC={this.changeUnitsToC} changeUnitsToF={this.changeUnitsToF} convertFtoC={this.convertFtoC} temp={current.temp} feels={current.feels_like} />
+                </div>
+                <Forecast daily={daily} units={this.state.units} day={this.day}  convertFtoC={this.convertFtoC}/>
             </div>
         )
     }
