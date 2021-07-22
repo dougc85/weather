@@ -3,12 +3,14 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    color: black;
+    width: 33%;
 }
 
 .DateInfo-day {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .DateInfo-time {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }

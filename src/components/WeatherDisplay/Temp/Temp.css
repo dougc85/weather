@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: black;
+    width: 33%;
 }
 
 .Temp-container {
@@ -9,11 +11,13 @@
 }
 
 .Temp-current {
-    font-size: 4rem;
+    font-size: 5rem;
+    color: #ffcf32;
+    text-shadow: 0 1px 2px rgba(0,0,0,1);
 }
 
 .Temp-feels {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .Temp-change-units {
