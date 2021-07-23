@@ -2,6 +2,7 @@
     background-color: #6294b6;
     height: 100%;
     color: #2c3e50;
+    min-height: 100vh;
 }
 
 .FrontSearch-formbox {

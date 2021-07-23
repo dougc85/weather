@@ -4,6 +4,7 @@
     color: black;
     padding-top: 2rem;
     padding-left: 3rem;
+    min-height: 100vh;
 }
 
 .ErrorScreen-heading {
