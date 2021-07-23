@@ -37,8 +37,17 @@ class MainPage extends Component {
     async getData(searchedTerms) {
         try {
             const modifiedTerms = this.cleanupSearchTerms(searchedTerms);
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${modifiedTerms}&appid=${this.access}`);
-            const data = await response.json();
+            let data;
+
+            if (Number.isInteger(parseInt(modifiedTerms.charAt(0)))) {
+                const zip = modifiedTerms.slice(0, 5);
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${this.access}`);
+                data = await response.json();
+            } else {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${modifiedTerms}&appid=${this.access}`);
+                data = await response.json();
+            }
+
             const lat = data.coord.lat;
             const lon = data.coord.lon;
             const response2 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&&appid=${this.access}`);
@@ -53,7 +62,8 @@ class MainPage extends Component {
                 currentPic: `http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`,
             })
         }
-        catch {
+        catch (err) {
+            console.log(err);
             this.setState({
                 error: true,
                 loading: false,
