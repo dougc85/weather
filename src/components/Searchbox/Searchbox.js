@@ -23,13 +23,14 @@ class Searchbox extends Component {
         event.preventDefault();
         this.props.setSearch(this.state.searchTerms);
         let modifiedSearch = this.cleanUpSearchTerms(this.state.searchTerms);
-        this.props.history.push(`/search/${modifiedSearch}`);
 
         if (this.props.little === 'true') {
             this.props.setLoading();
             this.props.getData(modifiedSearch);
         }
-        
+
+        this.props.history.push(`/search/${modifiedSearch}`);
+
     }
 
     cleanUpSearchTerms(terms) {

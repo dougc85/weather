@@ -6,6 +6,8 @@ import ErrorScreen from '../ErrorScreen/ErrorScreen';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 
 class MainPage extends Component {
+    _isMounted = false;
+
     constructor(props) {
         super(props);
 
@@ -31,14 +33,24 @@ class MainPage extends Component {
     }
 
     async componentDidMount() {
+        this._isMounted = true;
+
         this.getData(this.props.match.params.terms)
     }
 
-    async UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({
-            loading: true,
-        })
-        this.getData(nextProps.match.params.terms)
+    async componentDidUpdate() {
+        window.onpopstate = e => {
+            if (this._isMounted) {
+                this.setState({
+                    loading: true,
+                })
+            }
+            this.getData(this.props.match.params.terms)
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     async getData(searchedTerms) {
@@ -61,19 +73,25 @@ class MainPage extends Component {
             const weatherData = await response2.json();
             const response3 = await fetch(`https://geocode.xyz/?locate=${lat},${lon}&json=1&auth=${this.geo}`);
             const locData = await response3.json();
-            this.setState({
-                loading: false,
-                error: false,
-                weatherData: weatherData,
-                locData: locData,
-                currentPic: `http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`,
-            })
+            if (this._isMounted) {
+                this.setState({
+                    loading: false,
+                    error: false,
+                    weatherData: weatherData,
+                    locData: locData,
+                    currentPic: `http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`,
+                })
+            }
+
         }
         catch (err) {
-            this.setState({
-                error: true,
-                loading: false,
-            });
+            if (this._isMounted) {
+                this.setState({
+                    error: true,
+                    loading: false,
+                });
+            }
+
         }
     }
 
@@ -151,9 +169,11 @@ class MainPage extends Component {
     }
 
     setLoading() {
-        this.setState({
-            loading: true,
-        })
+        if (this._isMounted) {
+            this.setState({
+                loading: true,
+            })
+        }
     }
 
     render() {
