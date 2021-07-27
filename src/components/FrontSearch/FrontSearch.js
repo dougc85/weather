@@ -1,4 +1,4 @@
-import {React, Component} from 'react';
+import { React, Component } from 'react';
 import "./FrontSearch.css";
 import Searchbox from '../Searchbox/Searchbox'
 import Header from '../Header/Header'
@@ -8,7 +8,7 @@ class FrontSearch extends Component {
 
     render() {
 
-        return(
+        return (
             <div className="FrontSearch">
                 <Header setSearch={this.props.setSearch} />
                 <div className='FrontSearch-main'>
@@ -37,10 +37,10 @@ class FrontSearch extends Component {
                                 </ul>
                             </label>
                         </div>
-                       
+
                     </form>
-                    
-                    
+
+
                 </div>
             </div>
         )

@@ -23,7 +23,7 @@ class MainPage extends Component {
         };
         this.accessArr = ["2", "9", "a", "7", "f", "f", "3", "b", "0", "8", "6", "d", "7", "2", "7", "e", "c", "d", "f", "0", "5", "a", "a", "1", "e", "3", "2", "7", "f", "4", "f", "6"];
         this.access = this.accessArr.join('');
-        this.geoArray = ["2", "8", "9", "0", "3", "2", "7", "5", "3", "9", "1", "5", "9", "1", "6", "4", "2", "5", "5", "0", "4", "x", "7", "9", "5", "5", "9"];
+        this.geoArray = ["1", "9", "9", "2", "0", "0", "5", "6", "1", "1", "4", "9", "2", "2", "0", "6", "8", "9", "6", "7", "1", "x", "1", "0", "9", "4", "1", "9"];
         this.geo = this.geoArray.join('');
 
         this.getData = this.getData.bind(this);
@@ -32,6 +32,13 @@ class MainPage extends Component {
 
     async componentDidMount() {
         this.getData(this.props.match.params.terms)
+    }
+
+    async UNSAFE_componentWillReceiveProps(nextProps) {
+        this.setState({
+            loading: true,
+        })
+        this.getData(nextProps.match.params.terms)
     }
 
     async getData(searchedTerms) {
@@ -150,6 +157,7 @@ class MainPage extends Component {
     }
 
     render() {
+
         let mainContent;
         if (this.state.loading) {
             mainContent = (<LoadingScreen />);
