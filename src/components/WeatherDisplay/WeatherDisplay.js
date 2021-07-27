@@ -40,8 +40,6 @@ class WeatherDisplay extends Component {
 
 
     render() {
-        console.log(this.props.weatherData);
-        console.log(this.props.locData);
 
         const { current, daily } = this.props.weatherData;
 
@@ -53,7 +51,7 @@ class WeatherDisplay extends Component {
                     <Conditions units={this.state.units} weather={current.weather[0]} currentPic={this.props.currentPic} />
                     <Temp units={this.state.units} changeUnitsToC={this.changeUnitsToC} changeUnitsToF={this.changeUnitsToF} convertFtoC={this.convertFtoC} temp={current.temp} feels={current.feels_like} />
                 </div>
-                <Forecast daily={daily} units={this.state.units} day={this.day}  convertFtoC={this.convertFtoC}/>
+                <Forecast daily={daily} units={this.state.units} day={this.day} convertFtoC={this.convertFtoC} />
             </div>
         )
     }
