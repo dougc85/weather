@@ -24,7 +24,7 @@ class FrontSearch extends Component {
                                     </li>
                                     <li className="FrontSearch-options-option">
                                         <span className="FrontSearch-options-option-direction">City, Country</span>
-                                        <span className="FrontSearch-options-option-example">Kabul, Afghanistan</span>
+                                        <span className="FrontSearch-options-option-example">Beijing, China</span>
                                     </li>
                                     <li className="FrontSearch-options-option">
                                         <span className="FrontSearch-options-option-direction">City, State<span className="us-only">(US Only)</span></span>

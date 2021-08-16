@@ -25,8 +25,12 @@ class MainPage extends Component {
         };
         this.accessArr = ["2", "9", "a", "7", "f", "f", "3", "b", "0", "8", "6", "d", "7", "2", "7", "e", "c", "d", "f", "0", "5", "a", "a", "1", "e", "3", "2", "7", "f", "4", "f", "6"];
         this.access = this.accessArr.join('');
-        this.geoArray = ["1", "9", "9", "2", "0", "0", "5", "6", "1", "1", "4", "9", "2", "2", "0", "6", "8", "9", "6", "7", "1", "x", "1", "0", "9", "4", "1", "9"];
+        this.code = '604947119577549115091x122721';
+        console.log(this.code.split(''));
+        this.geoArray = ["6", "0", "4", "9", "4", "7", "1", "1", "9", "5", "7", "7", "5", "4", "9", "1", "1", "5", "0", "9", "1", "x", "1", "2", "2", "7", "2", "1"];
         this.geo = this.geoArray.join('');
+
+
 
         this.getData = this.getData.bind(this);
         this.setLoading = this.setLoading.bind(this);
