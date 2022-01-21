@@ -16,10 +16,9 @@
 }
 
 .Day-temps-min {
-
+    margin-left: .5rem;
 }
 
 .Day-temps-max {
     color: rgb(133, 35, 0);
-    margin-left: .5rem;
 }

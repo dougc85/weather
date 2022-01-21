@@ -25,12 +25,8 @@ class MainPage extends Component {
         };
         this.accessArr = ["2", "9", "a", "7", "f", "f", "3", "b", "0", "8", "6", "d", "7", "2", "7", "e", "c", "d", "f", "0", "5", "a", "a", "1", "e", "3", "2", "7", "f", "4", "f", "6"];
         this.access = this.accessArr.join('');
-        this.code = '604947119577549115091x122721';
-        console.log(this.code.split(''));
-        this.geoArray = ["6", "0", "4", "9", "4", "7", "1", "1", "9", "5", "7", "7", "5", "4", "9", "1", "1", "5", "0", "9", "1", "x", "1", "2", "2", "7", "2", "1"];
+        this.geoArray = ['3', '2', '8', '4', '4', '3', '2', '1', '9', '9', '8', '6', '1', '0', '1', '4', '8', '8', '9', '7', 'x', '9', '3', '5', '6', '4'];
         this.geo = this.geoArray.join('');
-
-
 
         this.getData = this.getData.bind(this);
         this.setLoading = this.setLoading.bind(this);
@@ -59,7 +55,9 @@ class MainPage extends Component {
 
     async getData(searchedTerms) {
         try {
+            console.log(searchedTerms);
             const modifiedTerms = this.cleanupSearchTerms(searchedTerms);
+            console.log(modifiedTerms);
             let data;
 
             if (Number.isInteger(parseInt(modifiedTerms.charAt(0)))) {
@@ -71,12 +69,35 @@ class MainPage extends Component {
                 data = await response.json();
             }
 
+            //Preparing Location info
+            console.log(data);
+            const city = data.name;
+            let state = undefined;
+            let country = undefined;
+
+
+            if (modifiedTerms.indexOf(",") !== -1) {
+                const termsArray = modifiedTerms.split(",");
+                if (termsArray.length === 3) {
+                    state = termsArray[1].toUpperCase();
+                    country = "USA";
+                } else {
+                    const countryWordArray = searchedTerms.split(",")[1].replaceAll("_", " ").trim().split(" ");
+                    for (let i = 0; i < countryWordArray.length; i++) {
+                        countryWordArray[i] = countryWordArray[i][0].toUpperCase() + countryWordArray[i].substring(1);
+                    }
+                    country = countryWordArray.join(" ");
+                }
+            }
+
+            const locData = { city, state, country }
+            console.log(locData);
+
             const lat = data.coord.lat;
             const lon = data.coord.lon;
             const response2 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&&appid=${this.access}`);
             const weatherData = await response2.json();
-            const response3 = await fetch(`https://geocode.xyz/?locate=${lat},${lon}&json=1&auth=${this.geo}`);
-            const locData = await response3.json();
+
             if (this._isMounted) {
                 this.setState({
                     loading: false,
@@ -89,6 +110,7 @@ class MainPage extends Component {
 
         }
         catch (err) {
+            console.log(err);
             if (this._isMounted) {
                 this.setState({
                     error: true,

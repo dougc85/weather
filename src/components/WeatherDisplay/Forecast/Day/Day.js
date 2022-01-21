@@ -16,8 +16,8 @@ class Day extends Component {
                 <p className="Day-name">{this.props.dayOfWeek}</p>
                 <img className="Day-icon" src={icon} alt={text} />
                 <p className="Day-temps" >
-                    <span className="Day-temps-min">{min}º</span>
                     <span className="Day-temps-max">{max}º</span>
+                    <span className="Day-temps-min">{min}º</span>
                 </p>
             </div>
         )

@@ -1,6 +1,6 @@
 import './App.css';
-import {React, Component} from 'react';
-import {Route, Switch} from "react-router-dom";
+import { React, Component } from 'react';
+import { Route, Switch } from "react-router-dom";
 import FrontSearch from "./components/FrontSearch/FrontSearch";
 import MainPage from "./components/MainPage/MainPage";
 
@@ -30,7 +30,7 @@ class App extends Component {
           <Route exact path="/search" render={routeProps => <FrontSearch {...routeProps} setSearch={this.setRootSearchState} />} />
           <Route exact path="/search/:terms" render={routeProps => <MainPage {...routeProps} setSearch={this.setRootSearchState} userSearch={this.state.userSearch} />} />
         </Switch>
-      
+
       </div>
     );
   }

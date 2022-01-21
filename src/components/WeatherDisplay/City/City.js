@@ -14,16 +14,22 @@ class City extends Component {
 
     generateName() {
 
+        const { city, state, country } = this.props.locData;
+
         let finalLocation = '';
 
-        finalLocation += this.capitalize(this.props.locData.city) + ', '
+        if (!country) {
+            finalLocation = city;
+        } else {
+            finalLocation += city + ', '
 
-        if (this.props.locData.country === "United States of America") {
-            //Add the state
-            finalLocation += this.props.locData.statename + ', ';
+            if (country === "USA") {
+                //Add the state
+                finalLocation += state + ', ';
+            }
+
+            finalLocation += country;
         }
-
-        finalLocation += this.props.locData.country;
 
         return finalLocation;
     }
