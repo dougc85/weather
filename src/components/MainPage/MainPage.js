@@ -25,8 +25,6 @@ class MainPage extends Component {
         };
         this.accessArr = ["2", "9", "a", "7", "f", "f", "3", "b", "0", "8", "6", "d", "7", "2", "7", "e", "c", "d", "f", "0", "5", "a", "a", "1", "e", "3", "2", "7", "f", "4", "f", "6"];
         this.access = this.accessArr.join('');
-        this.geoArray = ['3', '2', '8', '4', '4', '3', '2', '1', '9', '9', '8', '6', '1', '0', '1', '4', '8', '8', '9', '7', 'x', '9', '3', '5', '6', '4'];
-        this.geo = this.geoArray.join('');
 
         this.getData = this.getData.bind(this);
         this.setLoading = this.setLoading.bind(this);
