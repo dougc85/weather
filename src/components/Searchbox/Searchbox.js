@@ -29,6 +29,10 @@ class Searchbox extends Component {
             this.props.getData(modifiedSearch);
         }
 
+        this.setState({
+            searchTerms: "",
+        })
+        document.activeElement.blur();
         this.props.history.push(`/search/${modifiedSearch}`);
 
     }
