@@ -34,10 +34,9 @@ class MainPage extends Component {
         this._isMounted = true;
 
         this.getData(this.props.match.params.terms)
-    }
 
-    async componentDidUpdate() {
         window.onpopstate = e => {
+
             if (this._isMounted) {
                 this.setState({
                     loading: true,
@@ -45,6 +44,11 @@ class MainPage extends Component {
             }
             this.getData(this.props.match.params.terms)
         }
+    }
+
+    async componentDidUpdate() {
+
+
     }
 
     componentWillUnmount() {
